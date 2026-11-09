@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAVÉRA | Admin Dashboard</title>
+
+  <link rel="icon" type="image/png" href="Images/LLOGOO.png">
+
+  <link rel="stylesheet" href="Dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="dashboard-shell">
+
+    <a href="index.html" class="brand" aria-label="Savor and Sage home"></a>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+<div class="sidebar-brand">
+  <a href="index.html" class="dashboard-logo">
+    <img src="images/LLOGOO.png" alt="LAVÉRA Logo">
+  </a>
+
+  <div class="sidebar-brand-text">
+    <h2>LAVÉRA</h2>
+    <span>LAUNDRY & DRY CLEANING</span>
+  </div>
+
+  <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+
+    <div class="sidebar-label">MAIN MENU</div>
+
+    <nav class="sidebar-nav">
+      <a href="#overview" class="nav-link active" data-section="overview">
+        <i class="fa-solid fa-house"></i><span>Overview</span>
+      </a>
+      <a href="#orders" class="nav-link" data-section="orders">
+        <i class="fa-solid fa-basket-shopping"></i><span>Orders</span>
+        <small>08</small>
+      </a>
+      <a href="#customers" class="nav-link" data-section="customers">
+        <i class="fa-solid fa-users"></i><span>Customers</span>
+      </a>
+      <a href="#services" class="nav-link" data-section="services">
+        <i class="fa-solid fa-shirt"></i><span>Services</span>
+      </a>
+      <a href="#pricing" class="nav-link" data-section="pricing">
+        <i class="fa-solid fa-tags"></i><span>Pricing</span>
+      </a>
+      <a href="#schedule" class="nav-link" data-section="schedule">
+        <i class="fa-solid fa-calendar-days"></i><span>Pickup Schedule</span>
+      </a>
+      <a href="#messages" class="nav-link" data-section="messages">
+        <i class="fa-regular fa-message"></i><span>Messages</span>
+        <small>3</small>
+      </a>
+    </nav>
+
+    <div class="sidebar-label management-label">MANAGEMENT</div>
+
+    <nav class="sidebar-nav">
+      <a href="#analytics" class="nav-link" data-section="analytics">
+        <i class="fa-solid fa-chart-line"></i><span>Analytics</span>
+      </a>
+      <a href="#settings" class="nav-link" data-section="settings">
+        <i class="fa-solid fa-gear"></i><span>Settings</span>
+      </a>
+    </nav>
+
+ <div class="sidebar-bottom">
+
+  <div class="sidebar-help">
+    <div class="help-icon">
+      <i class="fa-regular fa-circle-question"></i>
+    </div>
+    <strong>Need some help?</strong>
+    <p>We're here whenever you need us.</p>
+    <a href="contact.html">
+      Contact Support <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <button class="sidebar-logout" id="sidebarLogoutBtn">
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <span>Log Out</span>
+  </button>
+
+</div>
+  </aside>
+
+
+  <!-- MAIN AREA -->
+  <main class="dashboard-main">
+
+    <!-- TOPBAR -->
+    <header class="dashboard-topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <span class="topbar-eyebrow">LAVÉRA MANAGEMENT</span>
+          <h1>Dashboard Overview</h1>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="dashboard-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="dashboardSearch" placeholder="Search orders, customers...">
+        </div>
+
+        <button class="topbar-icon" id="dashboardThemeToggle" title="Toggle theme" aria-label="Toggle theme">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+
+        <button class="topbar-icon direction-button" id="dashboardDirectionToggle" title="Switch direction">
+          RTL
+        </button>
+
+        <button class="topbar-icon notification-button" id="notificationButton" aria-label="Notifications">
+          <i class="fa-regular fa-bell"></i>
+          <span></span>
+        </button>
+
+       <div class="profile-wrapper">
+
+  <div class="profile-menu" id="profileMenu">
+    <div class="profile-avatar">LA</div>
+
+    <div class="profile-info">
+      <strong>LAVÉRA Admin</strong>
+      <span>Administrator</span>
+    </div>
+
+    <i class="fa-solid fa-chevron-down profile-arrow"></i>
+  </div>
+
+  <div class="profile-dropdown" id="profileDropdown">
+
+    <div class="dropdown-header">
+      <div class="dropdown-avatar">LA</div>
+      <div>
+        <strong>LAVÉRA Admin</strong>
+        <span>Business Administrator</span>
+      </div>
+    </div>
+
+    <div class="dropdown-business">
+      <small>BUSINESS ACCOUNT</small>
+      <p><i class="fa-solid fa-building"></i> LAVÉRA Laundry Services</p>
+      <p><i class="fa-solid fa-envelope"></i> admin@lavera.example</p>
+      <p><i class="fa-solid fa-user-shield"></i> Administrator</p>
+      <p><i class="fa-solid fa-circle-check"></i> Account Active</p>
+    </div>
+
+    <div class="dropdown-links">
+      <a href="#settings">
+        <i class="fa-solid fa-gear"></i> Account Settings
+      </a>
+
+      <a href="#support">
+        <i class="fa-solid fa-headset"></i> Help & Support
+      </a>
+    </div>
+
+    <button class="dropdown-logout" id="logoutBtn">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      Log Out
+    </button>
+
+  </div>
+</div>
+      </div>
+    </header>
+
+
+    <!-- PAGE CONTENT -->
+    <div class="dashboard-content" id="overview">
+
+      <!-- WELCOME -->
+      <section class="welcome-section">
+        <div>
+          <span class="welcome-date" id="todayDate">MONDAY, NOVEMBER 04, 2026</span>
+          <h2>Welcome back, Priya <span>!</span></h2>
+          <p>Here's what's happening with your laundry business today.</p>
+        </div>
+        <a href="booking.html" class="create-order-btn">
+          <i class="fa-solid fa-plus"></i> Create New Order
+        </a>
+      </section>
+
+
+      <!-- STAT CARDS -->
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <div class="stat-top">
+            <span>Total Orders</span>
+            <div class="stat-icon green-icon"><i class="fa-solid fa-basket-shopping"></i></div>
+          </div>
+          <h3>1,284</h3>
+          <div class="stat-bottom">
+            <span class="stat-change positive"><i class="fa-solid fa-arrow-up"></i> 12.8%</span>
+            <span>vs last month</span>
+          </div>
+          <div class="stat-decoration"></div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-top">
+            <span>Active Orders</span>
+            <div class="stat-icon gold-icon"><i class="fa-solid fa-clock"></i></div>
+          </div>
+          <h3>86</h3>
+          <div class="stat-bottom">
+            <span class="stat-change positive"><i class="fa-solid fa-arrow-up"></i> 8.4%</span>
+            <span>vs last month</span>
+          </div>
+          <div class="stat-decoration"></div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-top">
+            <span>Total Customers</span>
+            <div class="stat-icon sage-icon"><i class="fa-solid fa-users"></i></div>
+          </div>
+          <h3>642</h3>
+          <div class="stat-bottom">
+            <span class="stat-change positive"><i class="fa-solid fa-arrow-up"></i> 10.2%</span>
+            <span>vs last month</span>
+          </div>
+          <div class="stat-decoration"></div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-top">
+            <span>Total Revenue</span>
+            <div class="stat-icon cream-icon"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          </div>
+          <h3>₹2,48,650</h3>
+          <div class="stat-bottom">
+            <span class="stat-change positive"><i class="fa-solid fa-arrow-up"></i> 15.6%</span>
+            <span>vs last month</span>
+          </div>
+          <div class="stat-decoration"></div>
+        </article>
+
+      </section>
+
+
+      <!-- ANALYTICS -->
+      <section class="analytics-grid" id="analytics">
+
+        <article class="panel revenue-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">FINANCIAL PERFORMANCE</span>
+              <h3>Revenue Overview</h3>
+            </div>
+            <select id="revenuePeriod" class="period-select">
+              <option value="week">This Week</option>
+              <option value="month" selected>This Month</option>
+              <option value="year">This Year</option>
+            </select>
+          </div>
+
+          <div class="revenue-summary">
+            <strong id="revenueAmount">₹2,48,650</strong>
+            <span class="revenue-growth"><i class="fa-solid fa-arrow-up"></i> 15.6%</span>
+          </div>
+
+          <div class="chart-area">
+            <div class="chart-y-labels">
+              <span>₹60k</span>
+              <span>₹45k</span>
+              <span>₹30k</span>
+              <span>₹15k</span>
+              <span>₹0</span>
+            </div>
+
+            <div class="chart-plot">
+              <div class="chart-grid-lines">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+
+              <svg class="revenue-chart" viewBox="0 0 700 230" preserveAspectRatio="none" role="img" aria-label="Revenue trend chart">
+                <defs>
+                  <linearGradient id="revenueFill" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#496B50" stop-opacity=".25"/>
+                    <stop offset="100%" stop-color="#496B50" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path class="chart-fill" d="M0,175 C40,165 55,130 100,145 S160,160 200,115 S260,135 300,95 S360,115 400,75 S460,110 500,60 S560,85 600,42 S660,55 700,20 L700,230 L0,230 Z"/>
+                <path class="chart-line" d="M0,175 C40,165 55,130 100,145 S160,160 200,115 S260,135 300,95 S360,115 400,75 S460,110 500,60 S560,85 600,42 S660,55 700,20"/>
+                <circle cx="400" cy="75" r="5" class="chart-point"/>
+                <circle cx="600" cy="42" r="5" class="chart-point"/>
+                <circle cx="700" cy="20" r="5" class="chart-point"/>
+              </svg>
+
+              <div class="chart-x-labels" id="chartLabels">
+                <span>01</span><span>05</span><span>10</span><span>15</span><span>20</span><span>25</span><span>30</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="panel order-status-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">ORDER MANAGEMENT</span>
+              <h3>Order Status</h3>
+            </div>
+            <button class="more-button" aria-label="More options"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+
+          <div class="donut-wrap">
+            <div class="donut-chart">
+              <div class="donut-center">
+                <strong>128</strong>
+                <span>Total Orders</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="status-legend">
+            <div><span class="legend-dot dot-completed"></span><span>Completed</span><strong>64</strong></div>
+            <div><span class="legend-dot dot-progress"></span><span>In Progress</span><strong>38</strong></div>
+            <div><span class="legend-dot dot-pending"></span><span>Pending</span><strong>18</strong></div>
+            <div><span class="legend-dot dot-delivery"></span><span>Ready for Delivery</span><strong>8</strong></div>
+          </div>
+        </article>
+
+      </section>
+
+
+      <!-- ORDERS TABLE -->
+      <section class="panel orders-panel" id="orders">
+        <div class="panel-heading orders-heading">
+          <div>
+            <span class="panel-kicker">KEEP TRACK OF EVERYTHING</span>
+            <h3>Recent Orders</h3>
+          </div>
+          <a href="#orders" class="view-all-link">View All Orders <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="table-responsive">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>ORDER ID</th>
+                <th>CUSTOMER</th>
+                <th>SERVICE</th>
+                <th>DATE</th>
+                <th>AMOUNT</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTableBody">
+              <tr>
+                <td class="order-id">#LV1028</td>
+                <td><div class="customer-cell"><span class="customer-avatar avatar-one">AM</span><span><strong>Arjun Mehta</strong><small>arjun@email.com</small></span></div></td>
+                <td>Dry Cleaning</td>
+                <td>04 Nov 2026</td>
+                <td class="amount-cell">₹1,250</td>
+                <td><span class="status-badge status-progress">In Progress</span></td>
+                <td><button class="table-action" aria-label="View order"><i class="fa-regular fa-eye"></i></button></td>
+              </tr>
+
+              <tr>
+                <td class="order-id">#LV1027</td>
+                <td><div class="customer-cell"><span class="customer-avatar avatar-two">SK</span><span><strong>Sneha Kapoor</strong><small>sneha@email.com</small></span></div></td>
+                <td>Wash & Fold</td>
+                <td>04 Nov 2026</td>
+                <td class="amount-cell">₹680</td>
+                <td><span class="status-badge status-completed">Completed</span></td>
+                <td><button class="table-action" aria-label="View order"><i class="fa-regular fa-eye"></i></button></td>
+              </tr>
+
+              <tr>
+                <td class="order-id">#LV1026</td>
+                <td><div class="customer-cell"><span class="customer-avatar avatar-three">RV</span><span><strong>Rahul Verma</strong><small>rahul@email.com</small></span></div></td>
+                <td>Ironing Services</td>
+                <td>03 Nov 2026</td>
+                <td class="amount-cell">₹450</td>
+                <td><span class="status-badge status-pending">Pending</span></td>
+                <td><button class="table-action" aria-label="View order"><i class="fa-regular fa-eye"></i></button></td>
+              </tr>
+
+              <tr>
+                <td class="order-id">#LV1025</td>
+                <td><div class="customer-cell"><span class="customer-avatar avatar-four">PD</span><span><strong>Priya Desai</strong><small>priya@email.com</small></span></div></td>
+                <td>Stain Removal</td>
+                <td>03 Nov 2026</td>
+                <td class="amount-cell">₹890</td>
+                <td><span class="status-badge status-delivery">Ready for Delivery</span></td>
+                <td><button class="table-action" aria-label="View order"><i class="fa-regular fa-eye"></i></button></td>
+              </tr>
+
+              <tr>
+                <td class="order-id">#LV1024</td>
+                <td><div class="customer-cell"><span class="customer-avatar avatar-five">NK</span><span><strong>Neha Kulkarni</strong><small>neha@email.com</small></span></div></td>
+                <td>Wash & Fold</td>
+                <td>02 Nov 2026</td>
+                <td class="amount-cell">₹560</td>
+                <td><span class="status-badge status-completed">Completed</span></td>
+                <td><button class="table-action" aria-label="View order"><i class="fa-regular fa-eye"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+
+      <!-- LOWER GRID -->
+      <section class="bottom-grid">
+
+        <!-- PICKUP SCHEDULE -->
+        <article class="panel schedule-panel" id="schedule">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">TODAY'S ACTIVITIES</span>
+              <h3>Pickup Schedule</h3>
+            </div>
+            <a href="#schedule" class="small-view-link">View All</a>
+          </div>
+
+          <div class="schedule-list">
+            <div class="schedule-item">
+              <div class="schedule-time"><strong>09:30</strong><span>AM</span></div>
+              <div class="schedule-line"><span></span></div>
+              <div class="schedule-info">
+                <strong>Arjun Mehta</strong>
+                <span>Wash & Fold · Green Park</span>
+              </div>
+              <span class="schedule-tag">Pickup</span>
+            </div>
+
+            <div class="schedule-item">
+              <div class="schedule-time"><strong>11:00</strong><span>AM</span></div>
+              <div class="schedule-line"><span></span></div>
+              <div class="schedule-info">
+                <strong>Sneha Kapoor</strong>
+                <span>Dry Cleaning · City Centre</span>
+              </div>
+              <span class="schedule-tag delivery-tag">Delivery</span>
+            </div>
+
+            <div class="schedule-item">
+              <div class="schedule-time"><strong>02:30</strong><span>PM</span></div>
+              <div class="schedule-line"><span></span></div>
+              <div class="schedule-info">
+                <strong>Rahul Verma</strong>
+                <span>Ironing · Lake Road</span>
+              </div>
+              <span class="schedule-tag">Pickup</span>
+            </div>
+
+            <div class="schedule-item">
+              <div class="schedule-time"><strong>04:00</strong><span>PM</span></div>
+              <div class="schedule-line"><span></span></div>
+              <div class="schedule-info">
+                <strong>Priya Desai</strong>
+                <span>Stain Removal · West Street</span>
+              </div>
+              <span class="schedule-tag delivery-tag">Delivery</span>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- SERVICES -->
+        <article class="panel services-panel" id="services">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">SERVICE PERFORMANCE</span>
+              <h3>Popular Services</h3>
+            </div>
+            <button class="more-button" aria-label="More options"><i class="fa-solid fa-ellipsis"></i></button>
+          </div>
+
+          <div class="service-performance">
+            <div class="service-performance-top">
+              <div class="service-mini-icon"><i class="fa-solid fa-shirt"></i></div>
+              <div><strong>Wash & Fold</strong><span>Most requested</span></div>
+              <b>42%</b>
+            </div>
+            <div class="progress-track"><span style="--progress:42%"></span></div>
+          </div>
+
+          <div class="service-performance">
+            <div class="service-performance-top">
+              <div class="service-mini-icon gold-mini"><i class="fa-solid fa-user-tie"></i></div>
+              <div><strong>Dry Cleaning</strong><span>Premium care</span></div>
+              <b>28%</b>
+            </div>
+            <div class="progress-track"><span style="--progress:28%"></span></div>
+          </div>
+
+          <div class="service-performance">
+            <div class="service-performance-top">
+              <div class="service-mini-icon sage-mini"><i class="fa-solid fa-temperature-low"></i></div>
+              <div><strong>Ironing Services</strong><span>Everyday essential</span></div>
+              <b>18%</b>
+            </div>
+            <div class="progress-track"><span style="--progress:18%"></span></div>
+          </div>
+
+          <div class="service-performance">
+            <div class="service-performance-top">
+              <div class="service-mini-icon cream-mini"><i class="fa-solid fa-droplet"></i></div>
+              <div><strong>Stain Removal</strong><span>Special treatment</span></div>
+              <b>12%</b>
+            </div>
+            <div class="progress-track"><span style="--progress:12%"></span></div>
+          </div>
+        </article>
+
+      </section>
+
+
+      <!-- CUSTOMER SUMMARY -->
+      <section class="customer-summary-grid" id="customers">
+
+        <article class="panel customer-summary">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">CUSTOMER RELATIONSHIPS</span>
+              <h3>Customer Overview</h3>
+            </div>
+            <i class="fa-solid fa-users summary-heading-icon"></i>
+          </div>
+
+          <div class="customer-summary-stats">
+            <div><strong>642</strong><span>Total Customers</span></div>
+            <div><strong>48</strong><span>New This Month</span></div>
+            <div><strong>86%</strong><span>Repeat Customers</span></div>
+          </div>
+        </article>
+
+        <article class="panel quick-actions-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">QUICK ACCESS</span>
+              <h3>Quick Actions</h3>
+            </div>
+          </div>
+
+          <div class="quick-actions">
+            <a href="booking.html"><i class="fa-solid fa-plus"></i><span>New Booking</span></a>
+            <a href="#orders"><i class="fa-solid fa-list-check"></i><span>Manage Orders</span></a>
+            <a href="#customers"><i class="fa-solid fa-user-plus"></i><span>Customers</span></a>
+            <a href="#pricing"><i class="fa-solid fa-tags"></i><span>Update Pricing</span></a>
+          </div>
+        </article>
+
+      </section>
+
+
+      <!-- FOOTER -->
+      <footer class="dashboard-footer">
+        <span>© 2026 LAVÉRA. All rights reserved.</span>
+        <span>Designed with care <i class="fa-solid fa-heart"></i></span>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<script src="Dashboard.js"></script>
+</body>
+</html>
