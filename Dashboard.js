@@ -1,9 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const html = document.documentElement;
 
-  // ================= CURRENT DATE =================
+
+
+
+  const html = document.documentElement;
 
   const todayDate = document.getElementById("todayDate");
 
@@ -16,8 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }).format(new Date()).toUpperCase();
   }
 
-
-  // ================= THEME TOGGLE =================
 
   const themeToggle = document.getElementById("dashboardThemeToggle");
   const savedTheme = localStorage.getItem("lavera-theme") || "light";
@@ -46,8 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // ================= RTL / LTR =================
-
   const directionToggle = document.getElementById("dashboardDirectionToggle");
   const savedDirection = localStorage.getItem("lavera-direction") || "ltr";
 
@@ -72,9 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateDirectionButton();
   });
 
-
-  // ================= MOBILE SIDEBAR =================
-
   const sidebar = document.getElementById("sidebar");
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const sidebarClose = document.getElementById("sidebarClose");
@@ -95,8 +90,6 @@ document.addEventListener("DOMContentLoaded", () => {
   sidebarOverlay?.addEventListener("click", closeSidebar);
 
 
-  // ================= SIDEBAR ACTIVE LINKS =================
-
   const navLinks = document.querySelectorAll(".nav-link");
 
   navLinks.forEach(link => {
@@ -109,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // ================= ORDER SEARCH =================
 
   const searchInput = document.getElementById("dashboardSearch");
   const ordersTableBody = document.getElementById("ordersTableBody");
@@ -124,8 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
-  // ================= REVENUE PERIOD =================
 
   const revenuePeriod = document.getElementById("revenuePeriod");
   const revenueAmount = document.getElementById("revenueAmount");
@@ -159,16 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // ================= NOTIFICATIONS =================
-
   const notificationButton = document.getElementById("notificationButton");
 
   notificationButton?.addEventListener("click", () => {
     alert("You have 3 new notifications:\n\n1. New laundry order received.\n2. Pickup scheduled for today.\n3. New customer enquiry received.");
   });
 
-
-  // ================= ORDER VIEW BUTTONS =================
 
   document.querySelectorAll(".table-action").forEach(button => {
     button.addEventListener("click", () => {
@@ -180,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // ================= SERVICE PROGRESS ANIMATION =================
 
   document.querySelectorAll(".progress-track span").forEach(bar => {
     const progress = bar.style.getPropertyValue("--progress");
@@ -205,29 +190,15 @@ document.addEventListener("click", (e) => {
   }
 });
 
-document.getElementById("logoutBtn")?.addEventListener("click", () => {
-  if (confirm("Are you sure you want to log out?")) {
-    window.location.href = "index.html";
-  }
-});
-
-// SIDEBAR LOGOUT
-
-const sidebarLogoutBtn = document.getElementById("sidebarLogoutBtn");
-const profileLogoutBtn = document.getElementById("logoutBtn");
-
 function handleLogout() {
-  const confirmLogout = confirm("Are you sure you want to log out?");
-
-  if (confirmLogout) {
-    window.location.href = "login.html";
-  }
+    if (confirm("Are you sure you want to log out?")) {
+        sessionStorage.removeItem("laveraLoggedIn");
+        window.location.replace("dashboardlogin.html");
+    }
 }
 
-if (sidebarLogoutBtn) {
-  sidebarLogoutBtn.addEventListener("click", handleLogout);
-}
+document.getElementById("sidebarLogoutBtn")
+    ?.addEventListener("click", handleLogout);
 
-if (profileLogoutBtn) {
-  profileLogoutBtn.addEventListener("click", handleLogout);
-}
+document.getElementById("logoutBtn")
+    ?.addEventListener("click", handleLogout);

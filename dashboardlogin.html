@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAVÉRA | Admin Login</title>
+
+
+<link rel="icon" type="image/png" href="Images/LLOGOO.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+  --forest: #496B50;
+  --forest-dark: #304B36;
+  --sage: #A8B99A;
+  --cream: #F8F7EF;
+  --white: #FFFFFF;
+  --gold: #D5B46A;
+  --text: #26372A;
+  --muted: #858B80;
+  --border: #E5E8DF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* LEFT SECTION */
+
+.login-visual {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(35,57,40,.94), rgba(73,107,80,.80)),
+    url("https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=1400&q=85")
+    center/cover no-repeat;
+  color: white;
+  padding: 55px 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.visual-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: white;
+  text-decoration: none;
+}
+
+.visual-brand img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.visual-brand strong {
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: 27px;
+  letter-spacing: 3px;
+}
+
+.visual-brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.visual-message {
+  max-width: 480px;
+  animation: slideUp .8s ease;
+}
+
+.visual-kicker,
+.heading-kicker {
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.visual-message h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 5vw, 65px);
+  line-height: 1.2;
+  margin: 24px 0;
+}
+
+.visual-message h1 em {
+  color: var(--gold);
+}
+
+.visual-message p {
+  color: rgba(255,255,255,.8);
+  line-height: 1.9;
+  font-size: 15px;
+  max-width: 380px;
+}
+
+.visual-line {
+  width: 65px;
+  height: 3px;
+  background: var(--gold);
+  margin: 35px 0 18px;
+}
+
+.visual-caption {
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.visual-footer {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255,255,255,.65);
+  font-size: 11px;
+}
+
+/* RIGHT SECTION */
+
+.login-panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px;
+  background: var(--cream);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  animation: fadeIn .7s ease;
+}
+
+.mobile-brand {
+  display: none;
+}
+
+.login-heading {
+  margin-bottom: 38px;
+}
+
+.login-heading h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 43px;
+  font-weight: 600;
+  margin: 15px 0 10px;
+}
+
+.login-heading h2 em {
+  color: var(--forest);
+}
+
+.login-heading p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* FORM */
+
+.form-field {
+  margin-bottom: 23px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap > i {
+  position: absolute;
+  left: 17px;
+  color: var(--forest);
+  font-size: 15px;
+}
+
+.input-wrap input {
+  width: 100%;
+  height: 55px;
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 9px;
+  outline: none;
+  padding: 0 48px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text);
+  transition: .3s;
+}
+
+.input-wrap input:focus {
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(73,107,80,.10);
+}
+
+.input-wrap input::placeholder {
+  color: #A9AEA5;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 15px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0 25px;
+  gap: 10px;
+}
+
+.remember-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #687268;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.remember-option input {
+  accent-color: var(--forest);
+}
+
+.login-options a {
+  color: var(--forest);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.login-options a:hover,
+.back-home:hover {
+  color: var(--gold);
+}
+
+.login-button {
+  width: 100%;
+  height: 56px;
+  background: var(--forest);
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  transition: .3s;
+}
+
+.login-button:hover {
+  background: var(--forest-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(48,75,54,.18);
+}
+
+.login-button:disabled {
+  opacity: .7;
+  cursor: wait;
+}
+
+.login-message {
+  font-size: 12px;
+  min-height: 18px;
+  margin: -12px 0 14px;
+  color: #B33D35;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin: 35px 0 25px;
+}
+
+.login-divider span {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.login-divider small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.back-home {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 700;
+  transition: .3s;
+}
+
+.login-bottom {
+  text-align: center;
+  margin-top: 55px;
+  color: #A0A69B;
+  font-size: 11px;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 900px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-visual {
+    display: none;
+  }
+
+  .login-panel {
+    padding: 35px 22px;
+  }
+
+  .login-card {
+    max-width: 450px;
+  }
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 45px;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+    color: var(--forest);
+    font-weight: 700;
+  }
+
+  .mobile-brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+}
+
+@media(max-width: 480px) {
+  .login-panel {
+    padding: 25px 20px;
+  }
+
+  .login-heading h2 {
+    font-size: 36px;
+  }
+
+  .login-heading {
+    margin-bottom: 30px;
+  }
+
+  .login-options {
+    flex-wrap: wrap;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="login-page">
+
+  <section class="login-visual">
+
+    <a href="index.html" class="visual-brand">
+      <img src="images/LLOGOO.png" alt="LAVÉRA Logo">
+      <span>
+        <strong>LAVÉRA</strong>
+        <small>LAUNDRY & DRY CLEANING</small>
+      </span>
+    </a>
+
+    <div class="visual-message">
+      <span class="visual-kicker">PREMIUM FABRIC CARE</span>
+      <h1>Every detail,<br>beautifully <em>managed.</em></h1>
+      <p>
+        Welcome to your LAVÉRA management space.
+        Keep your laundry business running smoothly.
+      </p>
+      <div class="visual-line"></div>
+      <span class="visual-caption">CARE BEYOND CLEAN</span>
+    </div>
+
+    <div class="visual-footer">
+      <span>© 2026 LAVÉRA</span>
+      <span>Designed with care</span>
+    </div>
+
+  </section>
+
+  <section class="login-panel">
+
+    <div class="login-card">
+
+      <div class="mobile-brand">
+        <img src="images/LLOGOO.png" alt="LAVÉRA Logo">
+        <span>LAVÉRA</span>
+      </div>
+
+      <div class="login-heading">
+        <span class="heading-kicker">ADMINISTRATOR ACCESS</span>
+        <h2>Welcome <em>Back</em></h2>
+        <p>Sign in to access your management dashboard.</p>
+      </div>
+
+      <form id="loginForm">
+
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <div class="input-wrap">
+            <i class="fa-regular fa-envelope"></i>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email address"
+              autocomplete="username"
+              required>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-lock"></i>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required>
+
+            <button type="button" class="password-toggle"
+              id="togglePassword" aria-label="Show password">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="login-options">
+          <label class="remember-option">
+            <input type="checkbox" id="rememberMe">
+            <span>Remember me</span>
+          </label>
+
+          <a href="mailto:admin@lavera.example?subject=Password%20Assistance">
+            Forgot password?
+          </a>
+        </div>
+
+        <p class="login-message" id="loginMessage" role="alert"></p>
+
+        <button type="submit" class="login-button" id="loginButton">
+          <span>Sign In to Dashboard</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+      </form>
+
+      <div class="login-divider">
+        <span></span>
+        <small>ADMIN ACCESS</small>
+        <span></span>
+      </div>
+
+      <a href="index.html" class="back-home">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to Home
+      </a>
+
+      <p class="login-bottom">
+        © 2026 LAVÉRA. All rights reserved.
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
+
+<script>
+const loginForm = document.getElementById("loginForm");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+const loginMessage = document.getElementById("loginMessage");
+const loginButton = document.getElementById("loginButton");
+
+// If already logged in, open dashboard
+if (sessionStorage.getItem("laveraLoggedIn") === "true") {
+  window.location.replace("Dashboard.html");
+}
+
+// Show / Hide Password
+togglePassword.addEventListener("click", function () {
+  const isPassword = passwordInput.type === "password";
+
+  passwordInput.type = isPassword ? "text" : "password";
+
+  togglePassword.innerHTML = isPassword
+    ? '<i class="fa-regular fa-eye-slash"></i>'
+    : '<i class="fa-regular fa-eye"></i>';
+});
+
+// Login
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  loginMessage.textContent = "";
+
+  if (!email || !password) {
+    loginMessage.textContent = "Please enter your email and password.";
+    return;
+  }
+
+  if (!emailInput.checkValidity()) {
+    loginMessage.textContent = "Please enter a valid email address.";
+    return;
+  }
+
+  loginButton.disabled = true;
+  loginButton.innerHTML =
+    '<span>Signing In...</span><i class="fa-solid fa-spinner fa-spin"></i>';
+
+  // Demo-only frontend login
+  sessionStorage.setItem("laveraLoggedIn", "true");
+
+  if (document.getElementById("rememberMe").checked) {
+    localStorage.setItem("laveraRememberEmail", email);
+  } else {
+    localStorage.removeItem("laveraRememberEmail");
+  }
+
+  window.location.href = "Dashboard.html";
+});
+
+// Remember email
+const savedEmail = localStorage.getItem("laveraRememberEmail");
+
+if (savedEmail) {
+  emailInput.value = savedEmail;
+  document.getElementById("rememberMe").checked = true;
+}
+</script>
+
+</body>
+</html>
